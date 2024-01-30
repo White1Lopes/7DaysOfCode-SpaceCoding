@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "zbsP6lHI1MZrs170du4ERFyo883THU9V41hB5xDf5G62yNGn5ud0kvINoELoj4cszBlf0TlchA0SJbpyajM18Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gugag\\source\\repos\\7DaysOfCode-SpaceCoding\\7DaysOfCode-SpaceCoding\\7DaysOfCode-SpaceCoding.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gugag\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\gugag\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\gugag\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
