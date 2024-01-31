@@ -1,4 +1,4 @@
-﻿namespace _7DaysOfCode_SpaceCoding;
+﻿namespace _7DaysOfCode_SpaceCodings;
 public class Mascote
 {
     public Ability[] abilities { get; set; }

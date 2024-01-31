@@ -3,5 +3,5 @@
 public class Trainer
 {
     public string Name { get; set; }
-    public List<string> Pets { get; set; } = [];
+    public List<PokemonDetailsResult> Pets { get; set; } = [];
 }
