@@ -1,12 +1,22 @@
-﻿namespace _7DaysOfCode_SpaceCoding.Controller;
+﻿using AutoMapper;
+
+namespace _7DaysOfCode_SpaceCoding.Controller;
 
 public class PoketochiController
 {
     public List<PokemonResult> availableSpecies { get; set; }
     public Trainer Trainer { get; set; }
+    private IMapper mapper { get; set; }
 
     public PoketochiController()
     {
+        var config = new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile<AutoMapperProfile>();
+        });
+
+        mapper = config.CreateMapper();
+        
         Trainer = new Trainer();
         availableSpecies = PokeHttp.GetAllAvailableSpecies();
     }
@@ -106,8 +116,7 @@ public class PoketochiController
                     Menu.ShowPokemonInfos(details);
                     if (Menu.ConfirmAdopt())
                     {
-                        var poketochi = new PoketochiDTO();
-                        poketochi.UpdatedProperties(details);
+                        var poketochi = mapper.Map<PoketochiDTO>(details);
                         trainer.Pets.Add(poketochi);
                         Console.WriteLine("Parabéns! Você adotou um " + details.Name + "!");
                         Console.WriteLine("──────────────");

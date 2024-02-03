@@ -21,13 +21,13 @@ public class PoketochiDTO
         Health = rand.Next(11);
     }
 
-    public void UpdatedProperties(PokemonDetailsResult pokemonDetails)
-    {
-        Name = pokemonDetails.Name;
-        Height = pokemonDetails.Height;
-        Weight = pokemonDetails.Weight;
-        Abilitys = pokemonDetails.Abilities.Select(a => new AbilityDto { Nome = a.Ability.Name }).ToList();
-    }
+    // public void UpdatedProperties(PokemonDetailsResult pokemonDetails)
+    // {
+    //     Name = pokemonDetails.Name;
+    //     Height = pokemonDetails.Height;
+    //     Weight = pokemonDetails.Weight;
+    //     Abilitys = pokemonDetails.Abilities.Select(a => new AbilityDto { Nome = a.Ability.Name }).ToList();
+    // }
 
     public void Feed()
     {
