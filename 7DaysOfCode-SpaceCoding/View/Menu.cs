@@ -22,7 +22,7 @@ public static class Menu
         Console.WriteLine("4. Sair do Jogo");
         Console.WriteLine();
     }
-    
+
     public static void ShowInteractionMenu()
     {
         Console.WriteLine("\n ──────────────");
@@ -35,7 +35,7 @@ public static class Menu
         Console.WriteLine("6. Voltar");
         Console.Write("Escolha uma opção: ");
     }
-    
+
     public static int GetTrainerChoice(int min = 0, int max = 3)
     {
         int choice;
@@ -58,7 +58,7 @@ public static class Menu
         Console.WriteLine("4. Voltar ao Menu Principal");
         Console.Write("Escolha uma opção: ");
     }
-    
+
     public static void ShowAvailableSpecies(string name, List<PokemonResult> pokemonList)
     {
         Console.WriteLine("-------------------ADOTAR UM MASCOTE-----------------------");
@@ -68,7 +68,7 @@ public static class Menu
             Console.WriteLine($"{i + 1} - {pokemonList[i].Name}");
         }
     }
-    
+
     public static void ShowPokemonInfos(PokemonDetailsResult pokemon)
     {
         Console.WriteLine("-----------------------------------------------------------");
@@ -83,9 +83,19 @@ public static class Menu
     public static bool ConfirmAdopt()
     {
         Console.WriteLine("\n ──────────────");
-        Console.Write("Você gostaria de adotar este mascote? (s/n): ");
-        string answer = Console.ReadLine();
-        return answer.ToLower() == "s";
+        bool loopCondition = true;
+        string answer = "";
+        
+        while (loopCondition)
+        {
+            Console.Write("Você gostaria de adotar este mascote? (s/n): ");
+            answer = Console.ReadLine();
+            Console.WriteLine("Digite s ou n por favor!");
+            loopCondition = answer?.ToLower() != "s" && answer?.ToLower() != "sim" && answer?.ToLower() != "n" &&
+                            answer?.ToLower() != "não";
+        }
+
+        return answer?.ToLower() == "s" || answer?.ToLower() == "sim";
     }
 
     public static void ShowAdoptedPets(List<PoketochiDTO> adoptedPets)

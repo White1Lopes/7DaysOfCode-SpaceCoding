@@ -11,30 +11,65 @@ public static class PokeHttp
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
-    
+
     public static List<PokemonResult> GetAllAvailableSpecies()
     {
-        // Obter a lista de espécies de Pokémons
+        try
+        {
+            var client = new RestClient("https://pokeapi.co/api/v2/pokemon-species/");
+            var request = new RestRequest("", Method.Get);
+            var response = client.Execute(request);
 
-        var client = new RestClient("https://pokeapi.co/api/v2/pokemon-species/");
-        var request = new RestRequest("", Method.Get);
-        var response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+                var pokemonEspeciesResposta =
+                    JsonSerializer.Deserialize<PokemonSpeciesResult>(response.Content, Options);
 
-        var pokemonEspeciesResposta = JsonSerializer.Deserialize<PokemonSpeciesResult>(response.Content, Options);
+                return pokemonEspeciesResposta.Results;
+            }
 
-        return pokemonEspeciesResposta.Results;
+            Console.WriteLine($"Erro ao obter detalhes do Pokémon: {response.Content}");
+            return null;
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine($"Erro de solicitação: {e.Message}");
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro inesperado: {e.Message}");
+            return null;
+        }
     }
-    
+
     public static PokemonDetailsResult GetPokemon(string pokemon)
     {
-        var client = new RestClient(PokeBaseUrl + pokemon);
+        try
+        {
+            var client = new RestClient(PokeBaseUrl + pokemon);
 
-        var request = new RestRequest("", Method.Get);
+            var request = new RestRequest("", Method.Get);
 
-        var response = client.Execute(request);
+            var response = client.Execute(request);
 
-        var mascote = JsonSerializer.Deserialize<PokemonDetailsResult>(response.Content, Options);
+            if (response.IsSuccessful)
+            {
+                var mascote = JsonSerializer.Deserialize<PokemonDetailsResult>(response.Content, Options);
+                return mascote;
+            }
 
-        return mascote;
+            return null;
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine($"Erro de solicitação: {e.Message}");
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro inesperado: {e.Message}");
+            return null;
+        }
     }
 }

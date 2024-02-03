@@ -107,12 +107,14 @@ public class PoketochiController
                     Menu.ShowAvailableSpecies(trainer.Name, availableSpecies);
                     var specieIndex = Menu.GetChosenSpecie(availableSpecies);
                     var details = PokeHttp.GetPokemon(availableSpecies[specieIndex].Name);
+                    if(details is null) break;
                     Menu.ShowPokemonInfos(details);
                     break;
                 case 3:
                     Menu.ShowAvailableSpecies(trainer.Name, availableSpecies);
                     specieIndex = Menu.GetChosenSpecie(availableSpecies);
                     details = PokeHttp.GetPokemon(availableSpecies[specieIndex].Name);
+                    if(details is null) break;
                     Menu.ShowPokemonInfos(details);
                     if (Menu.ConfirmAdopt())
                     {
