@@ -17,9 +17,23 @@ public static class Menu
         Console.WriteLine("----------------------------MENU---------------------------");
         Console.WriteLine($"{name} você deseja:");
         Console.WriteLine("1 - Adotar um mascote virtual");
-        Console.WriteLine("2 - Ver seus mascotes");
-        Console.WriteLine("3 - Sair");
+        Console.WriteLine("2. Interagir com seu Mascote");
+        Console.WriteLine("3. Ver Mascotes Adotados");
+        Console.WriteLine("4. Sair do Jogo");
         Console.WriteLine();
+    }
+    
+    public static void ShowInteractionMenu()
+    {
+        Console.WriteLine("\n ──────────────");
+        Console.WriteLine("Menu de Interação:");
+        Console.WriteLine("1. Saber como o mascote está");
+        Console.WriteLine("2. Alimentar o mascote");
+        Console.WriteLine("3. Brincar com o mascote");
+        Console.WriteLine("4. Botar o mascote para dormir");
+        Console.WriteLine("5. Fazer carinho no mascote");
+        Console.WriteLine("6. Voltar");
+        Console.Write("Escolha uma opção: ");
     }
     
     public static int GetTrainerChoice(int min = 0, int max = 3)
@@ -74,7 +88,7 @@ public static class Menu
         return answer.ToLower() == "s";
     }
 
-    public static void ShowAdoptedPets(List<PokemonDetailsResult> adoptedPets)
+    public static void ShowAdoptedPets(List<PoketochiDTO> adoptedPets)
     {
         Console.WriteLine("\n ──────────────");
         Console.WriteLine("Mascotes Adotados:");
